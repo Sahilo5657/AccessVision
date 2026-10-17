@@ -219,10 +219,6 @@ npx vercel --prod
 
 Please ensure all contributions maintain WCAG 2.2 AA compliance.
 
-## 📄 License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - [W3C Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/)
