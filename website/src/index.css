@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AccessVision Hub – Global Styles
+   WCAG 2.2 AA Compliant Design System
+   ============================================================ */
+
+/* --- Base Resets & Typography --- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans leading-relaxed;
+    font-size: 1.125rem; /* 18px minimum for readability */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure images are responsive and have proper alt handling */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Ensure all interactive elements have visible focus indicators */
+  :focus-visible {
+    @apply outline-none ring-4 ring-primary-500 ring-offset-2 ring-offset-white rounded;
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+  }
+
+  /* Remove default focus for mouse users, keep for keyboard */
+  :focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+/* --- Skip Link (hidden until focused) --- */
+@layer components {
+  .skip-link {
+    @apply absolute -top-full left-4 z-[9999] bg-primary-700 text-white px-6 py-3 rounded-b-lg font-semibold text-lg;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    @apply top-0;
+  }
+}
+
+/* --- High Contrast Mode --- */
+@layer utilities {
+  .high-contrast {
+    --hc-bg: #000000;
+    --hc-fg: #ffffff;
+    --hc-link: #ffff00;
+    --hc-focus: #00ffff;
+    --hc-border: #ffffff;
+  }
+
+  .high-contrast body,
+  .high-contrast .hc-bg {
+    background-color: var(--hc-bg) !important;
+    color: var(--hc-fg) !important;
+  }
+
+  .high-contrast a {
+    color: var(--hc-link) !important;
+    text-decoration: underline !important;
+  }
+
+  .high-contrast button,
+  .high-contrast [role="button"] {
+    border: 2px solid var(--hc-border) !important;
+    color: var(--hc-fg) !important;
+    background-color: #333 !important;
+  }
+
+  .high-contrast :focus-visible {
+    outline: 3px solid var(--hc-focus) !important;
+    outline-offset: 3px;
+  }
+
+  .high-contrast img {
+    filter: contrast(1.2) brightness(1.1);
+  }
+
+  .high-contrast .card,
+  .high-contrast [class*="bg-"] {
+    background-color: #111 !important;
+    border: 1px solid var(--hc-border) !important;
+  }
+}
+
+/* --- Reading Mode --- */
+.reading-mode main {
+  max-width: 42rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 2rem !important;
+  font-size: 1.25rem !important;
+  line-height: 2 !important;
+  letter-spacing: 0.01em;
+}
+
+.reading-mode header,
+.reading-mode footer,
+.reading-mode aside,
+.reading-mode nav:not([aria-label="Breadcrumb"]) {
+  display: none !important;
+}
+
+.reading-mode main {
+  background-color: #fefce8 !important;
+  color: #1c1917 !important;
+  border-radius: 0.5rem;
+}
+
+/* --- Font Size Scale Classes --- */
+.font-scale-sm { font-size: 0.9rem; }
+.font-scale-base { font-size: 1.125rem; }
+.font-scale-lg { font-size: 1.35rem; }
+.font-scale-xl { font-size: 1.6rem; }
+.font-scale-xxl { font-size: 2rem; }
+
+/* --- ARIA Live Region Styling --- */
+[aria-live] {
+  /* Live regions are visually positioned but remain in flow for screen readers */
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Animations (respect prefers-reduced-motion) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Print Styles --- */
+@media print {
+  .no-print { display: none !important; }
+  body { font-size: 12pt; color: #000; background: #fff; }
+  a { color: #000; text-decoration: underline; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}

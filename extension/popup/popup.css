@@ -1,0 +1,313 @@
+/* ============================================================
+   AccessVision Assistant – Popup Styles
+   Redesigned for full reading controls, voice settings,
+   and Urdu language support.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: 13px;
+  width: 360px;
+  max-height: 580px;
+  overflow-y: auto;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Scrollbar styling --- */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+/* --- Header --- */
+header {
+  background: linear-gradient(135deg, #1e3a5f, #2563eb, #3b82f6);
+  color: #ffffff;
+  padding: 14px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+header h1 svg {
+  flex-shrink: 0;
+}
+
+/* --- Main Content --- */
+main {
+  padding: 8px 12px 12px;
+}
+
+/* --- Section Titles --- */
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+section:first-of-type .section-title {
+  margin-top: 4px;
+}
+
+/* --- Button Grid --- */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.button-grid.four-col {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* --- Action Buttons --- */
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.action-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.action-btn:active {
+  background-color: #e2e8f0;
+  transform: scale(0.98);
+}
+
+.action-btn[aria-pressed="true"],
+.action-btn.active {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* Primary action button (Read Full Page) */
+.primary-action {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  grid-column: span 2;
+  justify-content: center;
+  font-size: 13px;
+  min-height: 42px;
+}
+
+.primary-action:hover {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Urdu button styling */
+.urdu-btn {
+  direction: rtl;
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', sans-serif;
+  font-size: 12px;
+}
+
+/* Small buttons (playback) */
+.small-btn {
+  font-size: 11px;
+  padding: 6px 4px;
+  min-height: 34px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Preview button */
+.preview-btn {
+  grid-column: span 2;
+  justify-content: center;
+  margin-top: 4px;
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.preview-btn:hover {
+  background-color: #dcfce7;
+  border-color: #86efac;
+}
+
+/* --- Voice Controls Section --- */
+.voice-controls {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 4px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.control-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.control-row label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  min-width: 46px;
+  flex-shrink: 0;
+}
+
+.control-row input[type="range"] {
+  flex: 1;
+  height: 4px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.range-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+  min-width: 32px;
+  text-align: right;
+}
+
+.voice-select-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+}
+
+.voice-select-row select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.voice-select-row select:focus {
+  border-color: #2563eb;
+  outline: 2px solid rgba(37, 99, 235, 0.25);
+}
+
+/* --- Page Info --- */
+.info-text {
+  font-size: 11px;
+  color: #475569;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* --- Footer --- */
+footer {
+  padding: 8px 16px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  background-color: #f8fafc;
+}
+
+footer a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.15s;
+}
+
+footer a:hover {
+  background-color: #eff6ff;
+}
+
+footer a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .action-btn {
+    transition: none;
+  }
+}

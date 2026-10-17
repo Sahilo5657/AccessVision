@@ -1,0 +1,29 @@
+{
+  "name": "accessvision-tests",
+  "version": "1.0.0",
+  "description": "Automated WCAG 2.2 Accessibility and Functional Evaluation Suite",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:accessibility": "playwright test tests/accessibility.spec.ts",
+    "audit": "node scripts/run-audit.js"
+  },
+  "keywords": [
+    "accessibility",
+    "axe-core",
+    "playwright",
+    "wcag22",
+    "nvda",
+    "voiceover"
+  ],
+  "author": "AccessVision Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.9.1",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.12",
+    "axe-core": "^4.9.1",
+    "typescript": "^5.4.5"
+  }
+}

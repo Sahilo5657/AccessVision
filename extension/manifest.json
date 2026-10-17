@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "name": "AccessVision Assistant",
+  "version": "1.0.0",
+  "description": "Enhances web accessibility for visually impaired users with voice control, high contrast modes, page summarization, landmark navigation, and AI-assisted alt-text generation.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tts",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "AccessVision Assistant – Click or press Alt+Shift+V"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content-script.js"],
+      "css": ["content/content-styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+V"
+      },
+      "description": "Open AccessVision panel"
+    },
+    "toggle-reading-mode": {
+      "suggested_key": {
+        "default": "Alt+Shift+R"
+      },
+      "description": "Toggle reading mode"
+    },
+    "toggle-high-contrast": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Toggle high contrast mode"
+    },
+    "summarize-page": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Summarize current page"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

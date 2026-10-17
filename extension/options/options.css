@@ -1,0 +1,265 @@
+/* ============================================================
+   AccessVision Assistant – Options Styles
+   WCAG 2.2 AA compliant styling with accessible contrast,
+   distinct focus indicators, and spacious touch targets.
+   Updated for voice selection, Urdu support, and new controls.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #cbd5e1;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-focus: #2563eb;
+  --color-success: #15803d;
+  --color-success-bg: #dcfce7;
+  --color-info: #1e40af;
+  --color-info-bg: #dbeafe;
+  --color-error: #b91c1c;
+  --color-error-bg: #fee2e2;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-card: #1e293b;
+    --color-border: #334155;
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #94a3b8;
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+    --color-focus: #60a5fa;
+    --color-success: #86efac;
+    --color-success-bg: #14532d;
+    --color-info: #93c5fd;
+    --color-info-bg: #1e3a5f;
+    --color-error: #fca5a5;
+    --color-error-bg: #450a0a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+.settings-container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-card);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+}
+
+.settings-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.brand h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.settings-section {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.settings-section legend h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Button row for side-by-side buttons */
+.button-row {
+  flex-direction: row;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.field-hint {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+input[type="text"],
+input[type="url"],
+select {
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+  min-height: 44px;
+  font-family: var(--font-family);
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+select:focus,
+input[type="range"]:focus {
+  border-color: var(--color-focus);
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+}
+
+input[type="range"] {
+  height: 8px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  margin: 0.5rem 0;
+}
+
+.toggle-group {
+  margin-bottom: 1.5rem;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.switch-label input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 48px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.primary-button {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.primary-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border);
+}
+
+.secondary-button:hover {
+  background-color: var(--color-border);
+}
+
+.status-box {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  display: none;
+}
+
+.status-box.visible {
+  display: block;
+}
+
+.status-box.success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.status-box.info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid var(--color-info);
+}
+
+.status-box.error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}

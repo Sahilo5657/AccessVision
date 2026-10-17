@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+*/dist/
+build/
+*.zip
+
+# Python caches
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment variables & local secrets
+.env
+.env.local
+.env.*.local
+*.local
+
+# Playwright & Test reports
+test-results/
+playwright-report/
+playwright/.cache/
+blob-report/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/

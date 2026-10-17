@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AccessVision Assistant – Preferences & Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="settings-container" role="main">
+    <header class="settings-header">
+      <div class="brand">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+        <h1>AccessVision Assistant Settings</h1>
+      </div>
+      <p class="subtitle">Customize speech synthesis, voice selection, language preferences, display modes, navigation aids, and automated enhancements.</p>
+    </header>
+
+    <form id="settings-form" novalidate>
+      <!-- Speech & Voice Section -->
+      <fieldset class="settings-section">
+        <legend><h2>🎙️ Voice & Speech Synthesis</h2></legend>
+
+        <div class="form-group">
+          <label for="voiceLanguage">Default Speech Language</label>
+          <select id="voiceLanguage" name="voiceLanguage">
+            <option value="en-US">English (United States)</option>
+            <option value="en-GB">English (United Kingdom)</option>
+            <option value="ur-PK">اردو (پاکستان) — Urdu (Pakistan)</option>
+            <option value="es-ES">Spanish (Spain)</option>
+            <option value="fr-FR">French (France)</option>
+            <option value="de-DE">German (Germany)</option>
+            <option value="ar-SA">Arabic (Saudi Arabia)</option>
+          </select>
+          <span class="field-hint">Select the default accent and language for spoken announcements.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="englishVoice">Preferred English Voice</label>
+          <select id="englishVoice" name="englishVoice">
+            <option value="">Auto – Best Available (Cozy & Natural)</option>
+          </select>
+          <span class="field-hint">Choose a warm, natural voice for English content. Voices marked with ★ are online (higher quality).</span>
+        </div>
+
+        <div class="form-group">
+          <label for="urduVoice">Preferred Urdu Voice</label>
+          <select id="urduVoice" name="urduVoice">
+            <option value="">Auto – Best Available</option>
+          </select>
+          <span class="field-hint">AccessVision provides high-quality Natural Urdu speech (Cloud/Online ★). You can also install Windows offline voices in Windows Settings → Time &amp; Language → Language → Add 'Urdu (Pakistan)'.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="speechRate">Speech Rate (<span id="rateValue">1.0x</span>)</label>
+          <input type="range" id="speechRate" name="speechRate" min="0.5" max="2.0" step="0.1" value="1.0" aria-describedby="rate-hint" />
+          <span id="rate-hint" class="field-hint">Range from 0.5x (slow) to 2.0x (fast).</span>
+        </div>
+
+        <div class="form-group">
+          <label for="speechPitch">Speech Pitch (<span id="pitchValue">1.0</span>)</label>
+          <input type="range" id="speechPitch" name="speechPitch" min="0.5" max="1.5" step="0.1" value="1.0" aria-describedby="pitch-hint" />
+          <span id="pitch-hint" class="field-hint">Lower values = deeper voice, higher = lighter voice.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="speechVolume">Volume (<span id="volumeValue">100%</span>)</label>
+          <input type="range" id="speechVolume" name="speechVolume" min="0.1" max="1.0" step="0.1" value="1.0" aria-describedby="volume-hint" />
+          <span id="volume-hint" class="field-hint">Adjust speech playback volume.</span>
+        </div>
+
+        <div class="form-group button-row">
+          <button type="button" id="btn-test-english" class="secondary-button">
+            🔊 Test English Voice
+          </button>
+          <button type="button" id="btn-test-urdu" class="secondary-button">
+            🔊 اردو آواز کی جانچ
+          </button>
+        </div>
+      </fieldset>
+
+      <!-- Visual Display Preferences -->
+      <fieldset class="settings-section">
+        <legend><h2>🎨 Display & Text Formatting</h2></legend>
+
+        <div class="form-group">
+          <label for="fontSize">Default Reading Mode Font Size</label>
+          <select id="fontSize" name="fontSize">
+            <option value="sm">Small (16px)</option>
+            <option value="base" selected>Standard (18px)</option>
+            <option value="lg">Large (22px)</option>
+            <option value="xl">Extra Large (26px)</option>
+            <option value="xxl">Huge (32px)</option>
+          </select>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="highContrast">
+            <input type="checkbox" id="highContrast" name="highContrast" />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Enable high contrast by default</span>
+          </label>
+          <p class="field-hint">Applies high-contrast dark theme with 7:1+ contrast ratio on web pages.</p>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="readingMode">
+            <input type="checkbox" id="readingMode" name="readingMode" />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Enable reading mode by default</span>
+          </label>
+          <p class="field-hint">Removes distracting clutter, sidebars, and ads for focused readability.</p>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="enableHighlight">
+            <input type="checkbox" id="enableHighlight" name="enableHighlight" checked />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Highlight currently spoken text</span>
+          </label>
+          <p class="field-hint">Visually highlights the sentence or paragraph being read aloud for easy follow-along.</p>
+        </div>
+      </fieldset>
+
+      <!-- Assistive & AI Features -->
+      <fieldset class="settings-section">
+        <legend><h2>🤖 Assistive Enhancements & AI</h2></legend>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="floatingPanel">
+            <input type="checkbox" id="floatingPanel" name="floatingPanel" checked />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Display floating accessibility control panel on pages</span>
+          </label>
+          <p class="field-hint">Shows quick toggles for contrast, voice, and navigation directly on screen.</p>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="autoAltText">
+            <input type="checkbox" id="autoAltText" name="autoAltText" checked />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Auto-generate AI and heuristic alt-text for missing image descriptions</span>
+          </label>
+          <p class="field-hint">Scans unlabelled images and assigns descriptive alt text based on file metadata and context.</p>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="announceChanges">
+            <input type="checkbox" id="announceChanges" name="announceChanges" checked />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Announce dynamic page updates via screen reader live region</span>
+          </label>
+          <p class="field-hint">Notifies assistive technology when modals open or content updates dynamically.</p>
+        </div>
+
+        <div class="toggle-group">
+          <label class="switch-label" for="autoDetectUrdu">
+            <input type="checkbox" id="autoDetectUrdu" name="autoDetectUrdu" checked />
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span class="label-text">Auto-detect Urdu text and switch voice automatically</span>
+          </label>
+          <p class="field-hint">When enabled, the reader will detect Urdu script and switch to an Urdu voice mid-page for mixed content.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="backendApiUrl">Backend AI Service Endpoint (Optional)</label>
+          <input type="url" id="backendApiUrl" name="backendApiUrl" placeholder="http://localhost:3001/api" value="http://localhost:3001/api" />
+          <span class="field-hint">Local or cloud AccessVision AI service for advanced extractive and abstractive summarization.</span>
+        </div>
+      </fieldset>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" id="btn-save" class="primary-button">
+          💾 Save Preferences
+        </button>
+        <button type="button" id="btn-reset" class="secondary-button">
+          ↺ Reset to Defaults
+        </button>
+      </div>
+
+      <!-- ARIA live status announcement region -->
+      <div id="status-message" role="status" aria-live="polite" class="status-box"></div>
+    </form>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
