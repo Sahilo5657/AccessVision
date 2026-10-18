@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+    <title>AccessVision – Accessible Reader & Assistant</title>
+    
+    <!-- SEO & Accessibility Metadata -->
+    <meta name="description" content="Progressive Web App for visually impaired users featuring full content reading, high-contrast modes, voice commands, and natural English & Urdu speech synthesis." />
+    <meta name="theme-color" content="#090d16" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- PWA Mobile Web App Capabilities -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AccessVision" />
+    <meta name="application-name" content="AccessVision" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512.png" />
+
+    <!-- Typography: Inter, Outfit, Atkinson Hyperlegible & Noto Nastaliq Urdu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Accessibility Skip Link for Keyboard / Screen Reader Navigation -->
+    <a href="#main-content" class="skip-link">
+      Skip to main content (پہلے مواد پر جائیں)
+    </a>
+
+    <div id="root"></div>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => {
+              console.log('[AccessVision PWA] Service worker registered with scope:', reg.scope);
+              
+              // Handle updates
+              reg.onupdatefound = () => {
+                const installingWorker = reg.installing;
+                if (installingWorker) {
+                  installingWorker.onstatechange = () => {
+                    if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      console.log('[AccessVision PWA] New update available.');
+                      window.dispatchEvent(new CustomEvent('pwa-update-available'));
+                    }
+                  };
+                }
+              };
+            })
+            .catch((err) => {
+              console.warn('[AccessVision PWA] Service worker registration failed:', err);
+            });
+        });
+      }
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
